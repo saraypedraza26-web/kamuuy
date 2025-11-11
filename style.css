@@ -1,0 +1,188 @@
+ body {
+    margin: 0;
+    background-color: #CBE8F6;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* PORTADA */
+  .portada {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background-image: url('img/fondooooooo.jpg'); /* Aquí pones tu imagen */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 3;
+    cursor: pointer;
+    transition: opacity 1s ease;
+  }
+
+  .portada h1 {
+    font-family: 'Great Vibes', cursive;
+    color: white;
+    font-size: 4em;
+    background: rgba(62, 109, 156, 0.5);
+    padding: 20px 40px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  /* CONTENEDOR DE LA CARTA */
+  .carta-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    perspective: 2000px;
+    background-color: #CBE8F6;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+  }
+
+  .carta-container.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* CARTA CON EFECTO DE LIBRO */
+  .carta {
+    width: 90%;
+    max-width: 1000px;
+    height: 85vh;
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transform: rotateY(180deg);
+    transition: transform 1s ease;
+    overflow: hidden;
+  }
+
+  .carta.open {
+    transform: rotateY(0deg);
+  }
+
+  .carta-wrapper {
+    padding: 20px;
+    background-color: #A7C7E7;
+    border-radius: 25px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.15);
+    width: 95%;
+    max-width: 1100px;
+  }
+
+  /* LADO IZQUIERDO */
+  .lado-izquierdo {
+    flex: 1;
+    background-color: #A7C7E7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .lado-izquierdo img {
+    width: 90%;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    object-fit: cover;
+  }
+
+  /* LADO DERECHO */
+  .lado-derecho {
+    flex: 1;
+    position: relative;
+    background-color: #FFFFFF;
+    padding: 40px 50px;
+    overflow-y: auto;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: 'Dancing Script', cursive;
+  }
+
+  .lado-derecho h2 {
+    color: #3E6D9C;
+    font-size: 2.3em;
+    margin-bottom: 15px;
+  }
+
+  .lado-derecho p {
+    font-size: 1.35em;
+    line-height: 1.7em;
+    color: #444;
+    z-index: 2;
+    position: relative;
+  }
+
+  /* DECORACIONES */
+  .decoracion {
+    position: absolute;
+    border-radius: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+  }
+
+  .decoracion:hover {
+    transform: scale(1.05) rotate(2deg);
+  }
+
+  .decoracion img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+  }
+
+  /* POSICIÓN DE DECORACIONES */
+  .decor1 { top: 40px; right: -30px; width: 130px; height: 110px; transform: rotate(5deg); }
+  .decor2 { bottom: 40px; left: 30px; width: 160px; height: 120px; transform: rotate(-4deg); }
+  .decor3 { top: 50%; left: 40%; width: 140px; height: 110px; transform: translate(-50%, -50%) rotate(2deg); }
+  .decor4 { bottom: 60px; right: 40px; width: 120px; height: 100px; transform: rotate(8deg); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .carta {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .lado-izquierdo, .lado-derecho {
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .lado-izquierdo img {
+      width: 95%;
+      margin-top: 15px;
+    }
+
+    .lado-derecho {
+      padding: 30px 20px;
+      font-size: 1.1em;
+    }
+
+    .portada h1 {
+      font-size: 2.8em;
+      padding: 15px 25px;
+    }
+
+    .decoracion {
+      opacity: 0.8;
+    }
+
+    .decor1, .decor2, .decor3, .decor4 {
+      width: 80px;
+      height: 70px;
+      transform: rotate(0deg);
+    }
+  }
